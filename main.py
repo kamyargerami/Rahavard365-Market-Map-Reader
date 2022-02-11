@@ -1,3 +1,4 @@
+import platform
 import sys
 
 import jdatetime
@@ -9,7 +10,15 @@ from unidecode import unidecode
 
 
 def get_browser():
-    service = Service(executable_path="web_drivers/chromedriver")
+    if platform.system() == 'Linux':
+        service = Service(executable_path="web_drivers/chromedriver_linux64")
+    elif platform.system() == 'Windows':
+        service = Service(executable_path="web_drivers/chromedriver_win32.exe")
+    elif platform.system() == 'Darwin':
+        service = Service(executable_path="web_drivers/chromedriver_mac64")
+    else:
+        raise Exception('Unsupported OS')
+
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument(
@@ -48,16 +57,20 @@ def process_result(elements):
     file_object.close()
 
     if average > 2:
-        print('Positive: ' + str(average))
+        print('Result: Positive', str(average))
     elif average < -2:
-        print('Negative: ' + str(average))
+        print('Result: Negative', str(average))
     else:
-        print('Neutral: ' + str(average))
+        print('Result: Neutral', str(average))
 
 
+print('Starting ...')
 browser = get_browser()
+
+print('Open Rahavard365 market map url in browser ...')
 browser.get("http://rahavard365.com/marketmap")
 
+print('Process results ...')
 elements = browser.find_elements(By.CLASS_NAME, value='leaf')
 process_result(elements)
 
