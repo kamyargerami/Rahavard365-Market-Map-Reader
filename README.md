@@ -1,4 +1,6 @@
-# Rahavard365.com Market Map Reader - Iran Stock Live Price
+# Iran Stock Live Price
+
+## Rahavard365.com Market Map Reader
 
 This project stores the Iran stock market prices in csv file by date and time.
 
