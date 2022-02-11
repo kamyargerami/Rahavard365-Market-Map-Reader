@@ -1,8 +1,8 @@
-# Rahavard365.com MarketMap Reader
+# Rahavard365.com Marke tMap Reader
 
-This project stores all the stock market prices and, it will store them in csv file by date and time.
+This project stores the Iran stock market prices in csv file by date and time.
 
-You can process the result of csv files to get prices.
+You can process the result of csv files to get prices for each stock.
 
 Also, you can run this script in crontab to get the prices by schedules.
 
@@ -10,7 +10,7 @@ Script will output the average price of the stock market.
 
 # Installation
 
-You need python3 and virtualenv for installation.
+You need python3, pip and virtualenv for installation.
 
 ```
 pip install -r requirements.txt
